@@ -1,0 +1,15 @@
+.colorNumberEnd{
+    width: 100%;
+    color: red;
+    font-size: 60px;
+    /*border: 1px solid red;*/
+    text-align: center;
+}
+.colorNumberOk{
+    color: #484545;
+    width: 100%;
+    color: rgba(0,0,0,0.91);
+    font-size: 50px;
+    /*border: 1px solid red;*/
+    text-align: center;
+}
