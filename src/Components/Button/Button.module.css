@@ -1,0 +1,18 @@
+.buttons{
+    color: #ffffff;
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: #f64356;
+    margin: 10px auto;
+    text-align: center;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+    font-size: 20px;
+}
+.disabledButton{
+    background-color: #7a737a;
+}
+.mousDown{
+    color: #f64356;
+    background-color: #ffffff;
+}
