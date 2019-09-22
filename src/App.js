@@ -3,8 +3,13 @@ import './App.css';
 import Button from "./Components/Button/Button";
 import ShowNumber from "./Components/ShowNumber/ShowNumber";
 import InputValue from "./Components/InputValue/InputValue";
+import {connect} from "react-redux";
+import {plusNumber, reset} from "./Redux/CounterReducer";
 
 class App extends React.Component {
+    constructor(props){
+        super(props)
+    }
 
     state = {
         counter: 0,
@@ -56,7 +61,6 @@ class App extends React.Component {
         })
     };
 
-
     accessButtons = (id, access) => {
         let copyButtons = this.state.buttons.map(item => {
             if (item.id === 3) {
@@ -80,7 +84,6 @@ class App extends React.Component {
             });
         }
     };
-
 
     onChangeInputMaxValue = (event) => {
         if (event > this.state.limit.startValue) {
@@ -149,10 +152,10 @@ class App extends React.Component {
                             </div>
                         </div>
                         <div className={`interfaceManagement`}>
-                            <Button onClickButton={this.onClickPlusNumber.bind(this.state)}
+                            <Button onClickButton={this.props.onClickPlusNumber}
                                     buttonsTitle={this.state.buttons[0].buttonsTitle}
                                     access={this.state.buttons[0].access}/>
-                            <Button onClickButton={this.onClickReset.bind(this.state)}
+                            <Button onClickButton={this.props.onClickReset}
                                     buttonsTitle={this.state.buttons[1].buttonsTitle}
                                     access={this.state.buttons[1].access}/>
                         </div>
@@ -163,31 +166,14 @@ class App extends React.Component {
     }
 }
 
-export default App;
-
-// Побаловался
-
-// limit: {number: 0, T: 3, B: -3, error: 'Stop'}
-// onClickButton = isDone => {
-//     if (isDone) {
-//         this.state.number = this.state.limit.number;
-//
-//         if (this.state.limit.number < this.state.limit.T) {
-//             this.setState({number: this.state.number + 1});
-//             this.state.limit.number = this.state.limit.number + 1;
-//             console.log(this.state.limit.number);
-//         } else {
-//             this.setState({number: this.state.limit.error});
-//         }
-//     } else if (!isDone) {
-//         this.state.number = this.state.limit.number;
-//
-//         if (this.state.limit.number > this.state.limit.B) {
-//             this.setState({number: this.state.number - 1});
-//             this.state.limit.number = this.state.limit.number - 1;
-//             console.log(this.state.limit.number);
-//         } else {
-//             this.setState({number: this.state.limit.error});
-//         }
-//     }
-// };
+const mapStateToProps = state => {
+    return {}
+};
+const mapDispatchToProps = dispatch => {
+    return {
+        onClickPlusNumber: ()=>dispatch(plusNumber()),
+        onClickReset: ()=>dispatch(reset()),
+    }
+};
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
+export default ConnectedApp;
