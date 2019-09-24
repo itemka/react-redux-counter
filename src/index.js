@@ -7,9 +7,10 @@ import {combineReducers, createStore} from "redux";
 import CounterReducer from './Redux/CounterReducer';
 import {Provider} from "react-redux";
 
-let CombineReducers = combineReducers({CounterReducer: CounterReducer,});
-let store = createStore(CombineReducers);
-
+const CombineReducers = combineReducers({
+    CounterReducer: CounterReducer,
+});
+const store = createStore(CombineReducers);
 ReactDOM.render(
     <Provider store={store}>
         <App/>
