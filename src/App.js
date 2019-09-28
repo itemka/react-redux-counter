@@ -17,17 +17,17 @@ class App extends React.Component {
                                 <div>Max value</div>
                                 <InputValue errorColor={this.props.errorColorMax}
                                             value={this.props.maxValue}
-                                            onChangeInput={this.props.onChangeInputMaxValue}/>
+                                            onChangeInput={this.props.inputMaxValue}/>
                             </div>
                             <div className={`contentLine`}>
                                 <div>Start value</div>
                                 <InputValue errorColor={this.props.errorColorStart}
                                             value={this.props.startValue}
-                                            onChangeInput={this.props.onChangeInputStartValue}/>
+                                            onChangeInput={this.props.inputStartValue}/>
                             </div>
                         </div>
                         <div className={`interfaceManagement`}>
-                            <Button onClickButton={this.props.onClickSet}
+                            <Button onClickButton={this.props.set}
                                     // buttonsTitle={this.props.buttonSet.buttonsTitle}
                                     // access={this.props.buttonSet.access}
                                     buttonsTitle={this.props.buttons[2].buttonsTitle}
@@ -44,13 +44,13 @@ class App extends React.Component {
                             </div>
                         </div>
                         <div className={`interfaceManagement`}>
-                            <Button onClickButton={this.props.onClickPlusNumber}
+                            <Button onClickButton={this.props.plusNumber}
                                     // buttonsTitle={this.props.buttonPlus.buttonsTitle}
                                     // access={this.props.buttonPlus.access}
                                     buttonsTitle={this.props.buttons[0].buttonsTitle}
                                     access={this.props.buttons[0].access}
                             />
-                            <Button onClickButton={this.props.onClickReset}
+                            <Button onClickButton={this.props.reset}
                                     // buttonsTitle={this.props.buttonReset.buttonsTitle}
                                     // access={this.props.buttonReset.access}
                                     buttonsTitle={this.props.buttons[1].buttonsTitle}
@@ -78,14 +78,6 @@ const mapStateToProps = state => {
         buttons: state.CounterReducer.buttons,
     }
 };
-const mapDispatchToProps = dispatch => {
-    return {
-        onClickPlusNumber: () => dispatch(plusNumber()),
-        onClickReset: () => dispatch(reset()),
-        onClickSet: () => dispatch(set()),
-        onChangeInputMaxValue: event => dispatch(inputMaxValue(event)),
-        onChangeInputStartValue: event => dispatch(inputStartValue(event)),
-    }
-};
-const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
+
+const ConnectedApp = connect(mapStateToProps, {inputMaxValue, inputStartValue, plusNumber, reset, set})(App);
 export default ConnectedApp;
