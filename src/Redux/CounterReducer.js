@@ -153,9 +153,9 @@ const CounterReducer = (state = initialState, action) => {
                 }
             }
         }
-        default: {
+        default:
             return state;
-        }
+
     }
 };
 
